@@ -2,20 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_log(int argc,char log[],FILE *remind_log)
+void print_log(int argc,char log[],FILE *remind_log,int counter)
 {
   int c;
+  int n = 1;
   printf("REMINDERS\n---------------\n");
+  if(counter != 0){
+    printf("%d   ",n);
+  }
+  counter++;
   remind_log = fopen(log,"r");
   c = fgetc(remind_log);
   while(c != EOF){
     printf("%c", c);
     //insert dividers between reminders
     if(c == '\n'){
+      n++;
       for(int i = 0; i<15; i++){
 	printf("-");
       }
       printf("\n");
+      if(n != counter){
+	printf("%d   ",n);
+      }
     }
     c = fgetc(remind_log);
   }
@@ -28,7 +37,6 @@ int count_items(char log[],FILE *remind_log)
   remind_log = fopen(log,"r");
   c = fgetc(remind_log);
   while(c != EOF){
-    //insert dividers between reminders
     if(c == '\n'){
       counter++;
     }
@@ -151,7 +159,7 @@ int main(int argc, char *argv[])
   }
   //if there are no given parameters, print log
   if(argc == 1){
-  print_log(argc,log,remind_log);
+    print_log(argc,log,remind_log,counter);
   return 0;
   }
 
