@@ -6,7 +6,7 @@ void print_log(int argc,char log[],FILE *remind_log,int counter)
 {
   int c;
   int n = 1;
-  printf("REMINDERS\n---------------\n");
+  printf("\nREMINDERS\n---------------\n");
   if(counter != 0){
     printf("%d   ",n);
   }
@@ -49,7 +49,7 @@ void undo(int counter, char log[], FILE *remind_log)
 {
   int c;
   int tempctr = 0;
-  FILE *tempfile = fopen("temp.log","w");
+  FILE *tempfile = fopen("/usr/local/bin/temp.log","w");
   remind_log = fopen(log,"r");
   
   if(counter == 1){
@@ -71,7 +71,7 @@ void undo(int counter, char log[], FILE *remind_log)
   fclose(remind_log);
   fclose(tempfile);
 
-  tempfile = fopen("temp.log","r");
+  tempfile = fopen("/usr/local/bin/temp.log","r");
   remind_log = fopen(log,"w");
   c = fgetc(tempfile);
   while(c != EOF){
@@ -90,7 +90,7 @@ void remove_line(int counter,int line_to_remove,FILE *remind_log,char log[])
 {
   int c;
   int tempctr = 0;
-  FILE *tempfile = fopen("temp.log","w");
+  FILE *tempfile = fopen("/usr/local/bin/temp.log","w");
   remind_log = fopen(log,"r");
 
   if(line_to_remove > counter){
@@ -122,7 +122,7 @@ void remove_line(int counter,int line_to_remove,FILE *remind_log,char log[])
   fclose(remind_log);
   fclose(tempfile);
 
-  tempfile = fopen("temp.log","r");
+  tempfile = fopen("/usr/local/bin/temp.log","r");
   remind_log = fopen(log,"w");
   c = fgetc(tempfile);
   while(c != EOF){
@@ -134,7 +134,7 @@ void remove_line(int counter,int line_to_remove,FILE *remind_log,char log[])
 int main(int argc, char *argv[])
 {
   FILE *remind_log;
-  char log[] = "reminds.log";
+  char log[] = "/usr/local/bin/reminds.log";
   remind_log = fopen(log,"a");
 
   //get number of items in log

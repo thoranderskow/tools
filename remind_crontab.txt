@@ -1,0 +1,1 @@
+00 0-23 * * * cd ~/Desktop/tools && ./remind.sh
