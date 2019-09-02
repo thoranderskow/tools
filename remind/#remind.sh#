@@ -1,0 +1,7 @@
+#!/bin/sh
+PATH=/Users/thoranderskow/Desktop/repos/js_tutorial:/usr/local/bin:
+while true
+do
+    remind
+    sleep 5
+done
